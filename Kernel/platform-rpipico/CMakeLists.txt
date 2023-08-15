@@ -14,6 +14,7 @@ include_directories(
 	.
 	..
 	../dev
+	../dev/net
 	../include
 	../cpu-armm0
 )
@@ -31,10 +32,12 @@ add_executable(fuzix
 	tricks.S
 	core1.c
 	usbdescriptors.c
+	wiznet.c
 	../dev/blkdev.c
 	../dev/mbr.c
 	../dev/devsd_discard.c
 	../dev/devsd.c
+	../dev/net/net_w5x00.c
 	../lib/dhara/error.c
 	../lib/dhara/journal.c
 	../lib/dhara/map.c
@@ -48,6 +51,7 @@ add_executable(fuzix
 	../lowlevel-armm0.c
 	../malloc.c
 	../mm.c
+	../network.c
 	../process.c
 	../start.c
 	../swap.c
@@ -58,6 +62,7 @@ add_executable(fuzix
 	../syscall_fs3.c
 	../syscall_other.c
 	../syscall_proc.c
+	../syscall_net.c
 	../timer.c
 	../tty.c
 	../usermem.c

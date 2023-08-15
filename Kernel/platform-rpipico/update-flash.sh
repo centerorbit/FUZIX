@@ -24,6 +24,7 @@ chmod 0755 usr
 chmod 0755 var
 chmod 0700 root
 
+mkdir /usr/bin
 mkdir /usr/man
 mkdir /usr/man/man1
 mkdir /var/run
@@ -66,6 +67,9 @@ mknod null  20666 1024
 mknod mem   20660 1025
 mknod zero  20444 1026
 mknod proc  20666 1027
+mknod net   20666 1089 
+mknod dw0   60666 2048
+#mknod eth   20666 2048 
 
 cd /
 bget ../../Applications/util/init init
@@ -78,12 +82,16 @@ bget ../../Standalone/filesystem-src/etc-files/passwd
 bget ../../Standalone/filesystem-src/etc-files/inittab
 bget ../../Standalone/filesystem-src/etc-files/termcap
 bget ../../Standalone/filesystem-src/etc-files/rc
+bget ../../Applications/netd/netrc       
+bget ../../Applications/netd/resolv.conf
 chmod 0644 issue
 chmod 0644 motd
 chmod 0644 passwd
 chmod 0644 inittab
 chmod 0644 termcap
 chmod 0755 rc
+chmod 0644 netrc  
+chmod 0644 resolv.conf  
 
 cd /bin
 bget ../../Applications/util/banner
@@ -327,6 +335,34 @@ chmod 0755 wall
 
 bget ../../Applications/levee/levee
 chmod 0755 levee
+
+cd /usr/bin
+bget ../../Applications/netd/dig       
+bget ../../Applications/netd/echoping  
+bget ../../Applications/netd/telnet    
+bget ../../Applications/netd/ping      
+bget ../../Applications/netd/ntpdate   
+bget ../../Applications/netd/httpd     
+bget ../../Applications/netd/htget     
+bget ../../Applications/netd/tinyirc   
+bget ../../Applications/netd/ifconfig
+#bget ../../Applications/netd/netd-lwwire
+#bget ../../Applications/netd/netd-coconic
+bget ../../Applications/netd/netd-slip     
+#bget ../../Applications/netd/netd-eth
+chmod 0755 dig      
+chmod 0755 echoping
+chmod 0755 telnet
+chmod 0755 ping
+chmod 0755 ntpdate 
+chmod 0755 httpd
+chmod 0755 htget        
+chmod 0755 tinyirc     
+chmod 0755 ifconfig
+#chmod 0755 netd-lwwire 
+#chmod 0755 netd-coconic
+chmod 0755 netd-slip  
+#chmod 0755 netd-eth
 
 cd /usr/man/man1
 bget ../../Applications/levee/levee.1

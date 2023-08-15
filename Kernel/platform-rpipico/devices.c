@@ -54,6 +54,7 @@ static void timer_tick_cb(unsigned alarm)
     }
 
     timer_interrupt();
+    w5x00_poll();
 
     if (usbconsole_is_readable())
     {
@@ -68,9 +69,19 @@ void device_init(void)
      * cause a crash on startup... oddly. */
 
 	flash_dev_init();
-    
-	sd_rawinit();
+
+#ifdef CONFIG_SD
+    sd_rawinit();
 	devsd_init();
+#endif
+
+#ifdef CONFIG_NET_W5500
+    eth_spi_rawinit();
+#endif
+
+#ifdef CONFIG_NET
+	sock_init();
+#endif
 
     hardware_alarm_claim(0);
     update_us_since_boot(&now, time_us_64());
