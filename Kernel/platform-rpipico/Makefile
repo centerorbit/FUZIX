@@ -30,8 +30,10 @@ clean:
 	$(MAKE) -C ../../Applications/levee -f Makefile.armm0 clean
 	$(MAKE) -C ../../Applications/cave -f Makefile.armm0 clean
 	$(MAKE) -C ../../Applications/cursesgames -f Makefile.armm0 clean
+	$(MAKE) -C ../../Applications/netd -f Makefile.armm0 clean
+	$(MAKE) -C ../../Library/libs -f Makefile.armm0 clean
 	$(MAKE) -C ../../Standalone clean
-
+	
 world: build/fuzix.elf
 	$(MAKE) -C ../../Library/libs -f Makefile.armm0
 	$(MAKE) -C ../../Applications/util -f Makefile.armm0
@@ -41,6 +43,8 @@ world: build/fuzix.elf
 	$(MAKE) -C ../../Applications/levee -f Makefile.armm0
 	$(MAKE) -C ../../Applications/cave -f Makefile.armm0
 	$(MAKE) -C ../../Applications/cursesgames -f Makefile.armm0
+	$(MAKE) -C ../../Applications/netd -f Makefile.armm0
+	$(MAKE) -C ../../Library/libs -f Makefile.armm0
 	$(MAKE) -C ../../Standalone
 
 uf2conv: tools/uf2conv.c

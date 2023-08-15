@@ -5,6 +5,9 @@
 #include "globals.h"
 #include "printf.h"
 #include "core1.h"
+#include "hardware/clocks.h"
+
+#define PLL_SYS_KHZ (133 * 1000)
 
 //the led that indicates power
 //The on board one is pin 25
@@ -47,6 +50,18 @@ void syscall_handler(struct svc_frame* eh)
 
 int main(void)
 {
+    // set a system clock frequency in khz
+    set_sys_clock_khz(PLL_SYS_KHZ, true);
+
+    // configure the specified clock
+    clock_configure(
+        clk_peri,
+        0,                                                // No glitchless mux
+        CLOCKS_CLK_PERI_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, // System PLL on AUX mux
+        PLL_SYS_KHZ * 1000,                               // Input frequency
+        PLL_SYS_KHZ * 1000                                // Output (must be same as no divider)
+    );
+
     core1_init();
 
 	if ((U_DATA__U_SP_OFFSET != offsetof(struct u_data, u_sp)) ||
