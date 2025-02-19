@@ -60,6 +60,13 @@ static void timer_tick_cb(unsigned alarm)
 
     udata.u_ininterrupt = 0;
     irqrestore(irq);
+    w5x00_poll();
+
+    if (usbconsole_is_readable())
+    {
+        uint8_t c = usbconsole_getc_blocking();
+        tty_inproc(minor(BOOT_TTY), c);
+    }
 }
 
 #ifdef CONFIG_NET
@@ -70,6 +77,24 @@ void device_init(void)
 {
     /* Timer interrup must be initialized before blcok devices.
        set_boot_line uses pause syscall which will not be operational otherwise. */
+    /* The flash device is too small to be useful, and a corrupt flash will
+     * cause a crash on startup... oddly. */
+
+	flash_dev_init();
+
+#ifdef CONFIG_SD
+    sd_rawinit();
+	devsd_init();
+#endif
+
+#ifdef CONFIG_NET_W5500
+    eth_spi_rawinit();
+#endif
+
+#ifdef CONFIG_NET
+	sock_init();
+#endif
+
     hardware_alarm_claim(0);
     update_us_since_boot(&now, time_us_64());
     hardware_alarm_set_callback(0, timer_tick_cb);

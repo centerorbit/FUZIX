@@ -141,6 +141,12 @@ extern uint8_t progbase[USERMEM];
 #define plt_copyright() /* */
 #define swap_map(x) ((uint8_t*)(x))
 
+/* WizNET based TCP/IP : currently you'll need to disable other stuff to
+  fit the networking */
+#define CONFIG_NET
+#define CONFIG_NET_WIZNET
+#define CONFIG_NET_W5500	/* WizNET 5500 */
+
 /* Prevent name clashes wish the Pico SDK */
 
 #define MANGLED 1
