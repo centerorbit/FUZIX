@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 
 # Pull in SDK (must be before project)
 include(pico_sdk_import.cmake)
+include_directories(${PICO_SDK_PATH}/lib/tinyusb/src)
+
 
 project(fuzix C CXX ASM)
 set(CMAKE_C_STANDARD 11)

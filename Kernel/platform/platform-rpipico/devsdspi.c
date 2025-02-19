@@ -14,14 +14,23 @@
 #ifdef CONFIG_RC2040
 
 /* RC2040 board */
-/* Pico SPI GPIO connected to SD SPI1 */
-#define Pico_SD_SCK 14
-#define Pico_SD_TX  15
-#define Pico_SD_RX  12
-#define Pico_SD_CS  13
+// /* Pico SPI GPIO connected to SD SPI1 */
+// #define Pico_SD_SCK 14
+// #define Pico_SD_TX  15
+// #define Pico_SD_RX  12
+// #define Pico_SD_CS  13
 
-//Pico spi0 or spi1 must match GPIO pins used above.
-#define Pico_SD_SPI_MOD spi1
+// //Pico spi0 or spi1 must match GPIO pins used above.
+// #define Pico_SD_SPI_MOD spi1
+
+/* Update to use SPI0 instead of SPI1 */
+#define Pico_SD_SCK 18  // SPI0 SCK
+#define Pico_SD_TX  19  // SPI0 TX (MOSI)
+#define Pico_SD_RX  20  // SPI0 RX (MISO)
+#define Pico_SD_CS  10  // Any GPIO you choose for Chip Select 17 on pico, 10 on adafruit feather
+
+// Change the SPI peripheral
+#define Pico_SD_SPI_MOD spi0
 
 #elif defined(CONFIG_MAKER_PI)
 // Maker pico board
