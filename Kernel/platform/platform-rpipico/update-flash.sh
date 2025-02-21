@@ -384,6 +384,7 @@ cd /usr/games
 #bget ../../../Applications/games/adv14b
 #bget ../../../Applications/games/advint
 bget ../../../Applications/games/cowsay
+bget ../../../Applications/games/fuzfetch
 #bget ../../../Applications/games/fortune
 #bget ../../../Applications/games/fortune.dat
 #bget ../../../Applications/games/hamurabi

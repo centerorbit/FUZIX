@@ -16,6 +16,18 @@
 # Thus, the container will build within your local repo and artifacts will
 # all be local.
 # 
+# Then you can pull the build files with: `./pull-build.sh`
+# 1. The ./build/fuzix.uf2 gets flashed to the RP2040
+# 2. The ./build/filesystem.img gets flashed to your SD Card:
+# ```
+# sudo dd if=build/filesystem.img of=/dev/sda1 bs=4M status=progress
+# ```
+# Note: The SD card is prepared by creating an MSDOS part table, and a FAT32
+# partition 1 of 34MB (just bigger than filesystem.img), and then filesystem.img
+# is dd'd to that partition (/dev/sda1) in the end it's not a valid FAT32 partition
+# but FUZIX boots it!
+#
+#
 # To debug your docker-based build environment:
 # `docker run -it -v $(pwd):/workspace/FUZIX fuzix:rpipico /bin/bash`
 # Will drop you into a shell in the container.
