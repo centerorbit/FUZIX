@@ -23,3 +23,6 @@ size.report
 *.elf
 bin
 *.debug
+
+.cache
+build

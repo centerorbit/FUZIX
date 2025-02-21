@@ -1,3 +1,6 @@
 *.uf2
 *.ftl
 *.img
+
+picoctl
+picogpio

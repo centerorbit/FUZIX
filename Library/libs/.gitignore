@@ -8,3 +8,7 @@ m6809.lib
 termcap*.lib
 readline*.lib
 m*.lib
+
+helpers_armm0.s
+longjmp_armm0.s
+setjmp_armm0.s
