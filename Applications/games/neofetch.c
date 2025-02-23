@@ -8,7 +8,7 @@ Inspired by neofetch, but tailored for FUZIX environments.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// #include "hardware/clocks.h"
+#include "hardware/clocks.h"
 // #include "pico/unique_id.h"
 
 #define UNKNOWN "Unknown"
@@ -55,8 +55,8 @@ void fetch_system_info() {
         strncpy(info[5].value, shell, sizeof(info[5].value) - 1);
     }
 
-    // // Get CPU Frequency
-    // snprintf(info[6].value, sizeof(info[6].value), "%d MHz", frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_SYS) / 1000);
+     // Get CPU Frequency
+     snprintf(info[6].value, sizeof(info[6].value), "%d MHz", frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_SYS) / 1000);
 
     // // Get Unique ID
     // pico_unique_id_t uid;

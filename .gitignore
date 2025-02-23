@@ -25,4 +25,12 @@ bin
 *.debug
 
 .cache
+.vscode
 build
+advent.db
+*.s
+liberror.txt
+
+
+
+

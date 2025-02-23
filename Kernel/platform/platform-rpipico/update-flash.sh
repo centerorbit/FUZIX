@@ -384,7 +384,7 @@ cd /usr/games
 #bget ../../../Applications/games/adv14b
 #bget ../../../Applications/games/advint
 bget ../../../Applications/games/cowsay
-bget ../../../Applications/games/fuzfetch
+bget ../../../Applications/games/neofetch
 #bget ../../../Applications/games/fortune
 #bget ../../../Applications/games/fortune.dat
 #bget ../../../Applications/games/hamurabi
@@ -426,6 +426,7 @@ bget ../../../Applications/games/fuzfetch
 #chmod 0755 adv14b
 #chmod 0755 advint
 chmod 0755 cowsay
+chmod 0755 neofetch
 #chmod 0755 fortune
 #chmod 0644 fortune.dat
 #chmod 0755 hamurabi
